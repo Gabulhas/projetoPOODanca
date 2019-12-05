@@ -109,16 +109,7 @@ public class Espetaculo implements Serializable {
         return true;
     }
 
-    public static int (ArrayList <Espetaculo> espetaculoList){
-           for (int i=0; i<espetaculoList.size();i++){
-                     
-                int soma espetaculoList.get(i).getLotacao();
-                         System.out.println(espetaculoList.get(i));
-                 }
-                 
-    
-    
-    }
+
     @Override
     public String toString() {
         return "Espetaculo{" +
