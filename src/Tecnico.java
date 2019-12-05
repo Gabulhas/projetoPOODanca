@@ -1,5 +1,6 @@
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Tecnico implements Serializable{
     private String Nome;
@@ -88,12 +89,29 @@ public class Tecnico implements Serializable{
     }
 
     @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
     public boolean equals(Object obj) {
-        
-    //para fazer depois
-        return Todfiodfdkfw;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Tecnico other = (Tecnico) obj;
+        if (!Objects.equals(this.Nome, other.Nome)) {
+            return false;
+        }
+        return true;
+    }
 
-
-}
+ 
     
 }

@@ -1,5 +1,6 @@
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Coreografo implements Serializable {
     private String Nome;
@@ -68,10 +69,30 @@ public class Coreografo implements Serializable {
                 ", cc=" + cc +
                 ", genero='" + genero + '\'';
     }
-    public boolean equals(Object obj) {
-        //para fazer depois
-        return Todfiodfdkfje;
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Coreografo other = (Coreografo) obj;
+        if (!Objects.equals(this.Nome, other.Nome)) {
+            return false;
+        }
+        return true;
+    }
+  
 
 }

@@ -1,8 +1,8 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.io.PrintWriter;
 import java.util.Date;
-import myinputs.Ler;
 import java.util.Scanner;
     public class main {
 
@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 
   
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         File espetaculos = new File ("espetaculos.txt");
         File bailarinos = new File ("bailarinos.txt");
@@ -46,11 +46,11 @@ import java.util.Scanner;
              case 1:
                  Espetaculo X;
                  
-                String nome;
-              
+                
+              Scanner s = new Scanner (System.in);
                  System.out.println(" Introduza um nome:\n");
-                 nome= Ler.umaString();
-                 X= new Espetaculo(nome);
+                 
+                 X= new Espetaculo(s.next());
                  espetaculoList.add(X);
                  PrintWriter writer = new PrintWriter("espetaculo.txt");
                  
@@ -59,11 +59,11 @@ import java.util.Scanner;
                  break;
              case 2:
                  System.out.println("Intruduza o nome do espetaculo que quer consular: \n");
-                 String nome1 = Ler.umaString();
+                 Scanner b= new Scanner (System.in);
                  
                  for (int i=0; i<espetaculoList.size();i++){
                      
-                     if(espetaculoList.get(i).getNome().equals(nome1))
+                     if(espetaculoList.get(i).getNome().equals(b))
                          System.out.println(espetaculoList.get(i));
                  }
                  
@@ -74,13 +74,15 @@ import java.util.Scanner;
                  break;
              case 3:
                  System.out.println("Intruduza o nome do espetaculo que quer consular: \n");
-                 String nome1 = Ler.umaString();
+                Scanner c = new Scanner (System.in);
                  
                  for (int i=0; i<espetaculoList.size();i++){
                      
-                     if(espetaculoList.get(i).getNome().equals(nome1))
+                     if(espetaculoList.get(i).getNome().equals(c)){
                          System.out.println(espetaculoList.get(i).getData());
                       System.out.println(espetaculoList.get(i).getLocal());
+                      
+                 }
                  }
                  
                  
@@ -90,29 +92,29 @@ import java.util.Scanner;
                  break;
              case 4:
                  System.out.println("Intruduza o nome do espetaculo que quer consular: \n");
-                 String nome1 = Ler.umaString();
+                 Scanner d = new Scanner (System.in);
                    System.out.println("Intruduza uma nova data: \n");
-                   Date datanova  = getData();
+                   Date datanova  = new Date();
                  for (int i=0; i<espetaculoList.size();i++){
                        
-                     if(espetaculoList.get(i).getNome().equals(nome1))
+                     if(espetaculoList.get(i).getNome().equals(d))
                          
-                         espetaculoList.setData(datanova);
+                         espetaculoList.get(i).setData(datanova); 
                  
                  
                  
-                 
+                 }
                  break;
              case 5:
                  System.out.println("Intruduza o nome do espetaculo que quer consular: \n");
-                 String nome1 = Ler.umaString();
+               Scanner e = new Scanner (System.in);
                   System.out.println("Intruduza o nome do espetaculo que quer mudar: \n");
-                 String nomenovo = Ler.umaString();
+                 Scanner f = new Scanner (System.in);
                  
                     for (int i=0; i<espetaculoList.size();i++){
                        
-                     if(espetaculoList.get(i).getNome().equals(nome1)){
-                         espetaculoList.setNome(nomenovo);
+                     if(espetaculoList.get(i).getNome().equals(e)){
+                         espetaculoList.get(i).setNome(f.next());
                  }
              
                  }
@@ -139,22 +141,84 @@ import java.util.Scanner;
              case 10:
                  break;
              case 11:
+                 
+                 
+                 
                  break;
              case 12:
+                  System.out.println("Intruduza o nome do espetaculo que quer consular: \n");
+               Scanner r= new Scanner (System.in);
+                  
+                 
+                    for (int i=0; i<bailarinoList.size();i++){
+                       
+                     if(bailarinoList.get(i).getNome().equals(r)){
+                         bailarinoList.remove(i);
+                     }
+             
+                    }
+                 
+                 
+                 
                  break;
              case 13:
                  break;
              case 14:
+                  System.out.println("Intruduza o nome do espetaculo que quer consular: \n");
+               Scanner j = new Scanner (System.in);
+                  
+                 
+                    for (int i=0; i<coreografoList.size();i++){
+                       
+                     if(coreografoList.get(i).getNome().equals(j)){
+                         coreografoList.remove(i);
+                     }
+             
+                    }
+                 
+                 
+                 
                  break;
              case 15:
                  break;
               case 16:
+                   System.out.println("Intruduza o nome do espetaculo que quer consular: \n");
+               Scanner w = new Scanner (System.in);
+                  
+                 
+                    for (int i=0; i<tecnicoList.size();i++){
+                       
+                     if(tecnicoList.get(i).getNome().equals(w)){
+                         espetaculoList.remove(i);
+                     }
+             
+                    }
+             
                  break;
              case 17:
+                 for (int i=0; i<bailarinoList.size();i++){
+                     
+                     
+                         System.out.println(bailarinoList.get(i));
+                 }
+                 
+                 
                  break;
              case 18:
+                 for (int i=0; i<coreografoList.size();i++){
+                     
+                     
+                         System.out.println(coreografoList.get(i));
+                 }
                  break;
              case 19:
+                 
+                 for (int i=0; i<tecnicoList.size();i++){
+                     
+                     
+                         System.out.println(tecnicoList.get(i));
+                 }
+                 
                  break;
             
          }
