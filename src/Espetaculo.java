@@ -12,6 +12,10 @@ public class Espetaculo implements Serializable {
     private String estiloDanca;
     private float bruto;
     private float investimento;
+    private ArrayList<Bailarino> bailarinos = new ArrayList<Bailarino>();
+    private ArrayList<Bailarino> coreografo = new ArrayList<Bailarino>();
+    private ArrayList<Bailarino> tecnicos = new ArrayList<Bailarino>();
+
 
     public Espetaculo(String nome) {
         this.local = "";

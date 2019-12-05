@@ -10,13 +10,13 @@ public class Bailarino implements Serializable {
     private String genero;
 
     
-    public Bailarino(String nome,float cc){
+    public Bailarino(String nome,float cc, int idade,double salario, String genero){
 
         this.Nome= nome;
         this.cc=cc;
-        this.idade = 0;
-        this.salario= .0;
-        this.genero="";
+        this.idade = idade;
+        this.salario= salario;
+        this.genero=genero;
 
     }
     
