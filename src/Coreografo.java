@@ -68,10 +68,6 @@ public class Coreografo implements Serializable {
                 ", cc=" + cc +
                 ", genero='" + genero + '\'';
     }
-    public boolean equals(Object obj) {
-        //para fazer depois
-        return Todfiodfdkfje;
 
-    }
 
 }
