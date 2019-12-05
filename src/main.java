@@ -14,27 +14,28 @@ import java.io.File;
         File coreografos = new File ("coreografos.txt");
         File tecnicos = new File ("tecnicos.txt");
         int n=1;
+        //test
         //Menu
-         System.out.println("1 - Criar Espetáculo\n" +
-                            "2 – Consultar Espetáculo\n" +
-                            "3 - Consultar apenas dia e local de Espetáculo" +
-                            "4 – Modificar dia de Espetáculo\n" +
-                            "5 – Corrigir o nome de um Espetáculo\n" +
-                            "6 – Listar todos os Espetáculos\n" +
-                            "7 - Consultar lotação do Espetáculo\n" +
-                            "8 - Calcular média de assistência\n" + 
-                            "9 - Calcular média de investimento\n" +
-                            "10 - Calcular Lucro de Espetáculo\n" +
+         System.out.println("1 - Criar Espetï¿½culo\n" +
+                            "2 ï¿½ Consultar Espetï¿½culo\n" +
+                            "3 - Consultar apenas dia e local de Espetï¿½culo" +
+                            "4 ï¿½ Modificar dia de Espetï¿½culo\n" +
+                            "5 ï¿½ Corrigir o nome de um Espetï¿½culo\n" +
+                            "6 ï¿½ Listar todos os Espetï¿½culos\n" +
+                            "7 - Consultar lotaï¿½ï¿½o do Espetï¿½culo\n" +
+                            "8 - Calcular mï¿½dia de assistï¿½ncia\n" + 
+                            "9 - Calcular mï¿½dia de investimento\n" +
+                            "10 - Calcular Lucro de Espetï¿½culo\n" +
                             "11 - Criar Bailarino\n" +
-                            "12 – Apagar um Bailarino\n" +
-                            "13 - Criar Coreógrafo\n" +
-                            "14 – Apagar um Coreógrafo\n" +
-                            "15 - Criar Técnico\n" +
-                            "16 – Apagar um Técnico\n" +
-                            "17 – Listar todos os Bailarinos\n" +
-                            "18 – Listar todos os Coreógrafos\n" +
-                            "19 – Listar todos os Técnicos\n" +
-                            "20 – Terminar");
+                            "12 ï¿½ Apagar um Bailarino\n" +
+                            "13 - Criar Coreï¿½grafo\n" +
+                            "14 ï¿½ Apagar um Coreï¿½grafo\n" +
+                            "15 - Criar Tï¿½cnico\n" +
+                            "16 ï¿½ Apagar um Tï¿½cnico\n" +
+                            "17 ï¿½ Listar todos os Bailarinos\n" +
+                            "18 ï¿½ Listar todos os Coreï¿½grafos\n" +
+                            "19 ï¿½ Listar todos os Tï¿½cnicos\n" +
+                            "20 ï¿½ Terminar");
          switch (n) {
              case 1:
                  break;
