@@ -1,6 +1,9 @@
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
-public class Espetaculo {
+public class Espetaculo implements Serializable {
     private String local;
     private String nome;
     private int lotacao;
@@ -10,7 +13,17 @@ public class Espetaculo {
     private float bruto;
     private float investimento;
 
-    public Espetaculo(String nome,)
+    public Espetaculo(String nome) {
+        this.local = "";
+        this.nome = nome;
+        this.lotacao = 0;
+        this.data = data;
+        this.preço = 0;
+        this.estiloDanca = "";
+        this.bruto = 0;
+        this.investimento = 0;
+    }
+    
 
     public String getLocal() {
         return local;
@@ -76,6 +89,36 @@ public class Espetaculo {
         this.investimento = investimento;
     }
 
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Espetaculo other = (Espetaculo) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static int (ArrayList <Espetaculo> espetaculoList){
+           for (int i=0; i<espetaculoList.size();i++){
+                     
+                int soma espetaculoList.get(i).getLotacao();
+                         System.out.println(espetaculoList.get(i));
+                 }
+                 
+    
+    
+    }
     @Override
     public String toString() {
         return "Espetaculo{" +

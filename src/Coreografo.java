@@ -1,4 +1,7 @@
-public class Coreografo {
+
+import java.io.Serializable;
+
+public class Coreografo implements Serializable {
     private String Nome;
     private int idade;
     private double salario;

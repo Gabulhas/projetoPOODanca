@@ -1,10 +1,31 @@
-public class Tecnico {
+
+import java.io.Serializable;
+
+public class Tecnico implements Serializable{
     private String Nome;
     private int idade;
     private double salario;
     private float cc;
     private String genero;
     private String especificacao;
+    
+
+    
+    public Tecnico(String nome,float cc){
+
+        this.Nome= nome;
+        this.cc=cc;
+        this.idade = 0;
+        this.salario= .0;
+        this.genero="";
+        this.especificacao="";
+
+    }
+    
+    
+    
+    
+    
 
     public String getNome() {
         return Nome;
@@ -68,10 +89,11 @@ public class Tecnico {
 
     @Override
     public boolean equals(Object obj) {
-        //para fazer depois
-        return Todfiodfdkfje;
+        
+    //para fazer depois
+        return Todfiodfdkfw;
 
-    }
 
-
+}
+    
 }
