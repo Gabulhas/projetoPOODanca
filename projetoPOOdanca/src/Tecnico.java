@@ -5,6 +5,24 @@ public class Tecnico {
     private float cc;
     private String genero;
     private String especificacao;
+    
+    
+    
+    public Tecnico(String nome,float cc){
+
+        this.Nome= nome;
+        this.cc=cc;
+        this.idade = 0;
+        this.salario= .0;
+        this.genero="";
+        this.especificacao="";
+
+    }
+    
+    
+    
+    
+    
 
     public String getNome() {
         return Nome;
@@ -68,10 +86,9 @@ public class Tecnico {
 
     @Override
     public boolean equals(Object obj) {
-        //para fazer depois
-        return Todfiodfdkfje;
-
-    }
+        
+    //para fazer depois
+        return Todfiodfdkfw;
 
 
 }

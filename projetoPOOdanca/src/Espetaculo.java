@@ -10,6 +10,18 @@ public class Espetaculo {
     private float bruto;
     private float investimento;
 
+    public Espetaculo(String nome) {
+        this.local = "";
+        this.nome = nome;
+        this.lotacao = 0;
+        this.data = data;
+        this.preço = 0;
+        this.estiloDanca = "";
+        this.bruto = 0;
+        this.investimento = 0;
+    }
+    
+    
     public Espetaculo(String nome,)
 
     public String getLocal() {

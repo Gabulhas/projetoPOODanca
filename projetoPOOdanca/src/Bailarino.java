@@ -6,6 +6,20 @@ public class Bailarino {
     private float cc;
     private String genero;
 
+    
+    public Bailarino(String nome,float cc){
+
+        this.Nome= nome;
+        this.cc=cc;
+        this.idade = 0;
+        this.salario= .0;
+        this.genero="";
+
+    }
+    
+    
+    
+    
     public String getNome() {
         return Nome;
     }
