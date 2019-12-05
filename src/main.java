@@ -2,8 +2,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.io.PrintWriter;
 import java.util.Date;
+import myinputs.Ler;
 import java.util.Scanner;
-
     public class main {
 
 
@@ -67,20 +67,17 @@ import java.util.Scanner;
                          System.out.println(espetaculoList.get(i));
                  }
                  
-                 
-                 
-                 
-                 
                  break;
              case 3:
                  System.out.println("Intruduza o nome do espetaculo que quer consular: \n");
-                 String nome1 = Ler.umaString();
+                 String nomex = Ler.umaString();
                  
                  for (int i=0; i<espetaculoList.size();i++){
                      
-                     if(espetaculoList.get(i).getNome().equals(nome1))
+                     if(espetaculoList.get(i).getNome().equals(nomex)) {
                          System.out.println(espetaculoList.get(i).getData());
-                      System.out.println(espetaculoList.get(i).getLocal());
+                         System.out.println(espetaculoList.get(i).getLocal());
+                     }
                  }
                  
                  
@@ -90,28 +87,28 @@ import java.util.Scanner;
                  break;
              case 4:
                  System.out.println("Intruduza o nome do espetaculo que quer consular: \n");
-                 String nome1 = Ler.umaString();
+                 String nomey = Ler.umaString();
                    System.out.println("Intruduza uma nova data: \n");
                    Date datanova  = getData();
                  for (int i=0; i<espetaculoList.size();i++){
                        
-                     if(espetaculoList.get(i).getNome().equals(nome1))
+                     if(espetaculoList.get(i).getNome().equals(nomey))
                          
                          espetaculoList.setData(datanova);
                  
                  
-                 
+                 }
                  
                  break;
              case 5:
                  System.out.println("Intruduza o nome do espetaculo que quer consular: \n");
-                 String nome1 = Ler.umaString();
+                 String nomez = Ler.umaString();
                   System.out.println("Intruduza o nome do espetaculo que quer mudar: \n");
                  String nomenovo = Ler.umaString();
                  
                     for (int i=0; i<espetaculoList.size();i++){
                        
-                     if(espetaculoList.get(i).getNome().equals(nome1)){
+                     if(espetaculoList.get(i).getNome().equals(nomez)){
                          espetaculoList.setNome(nomenovo);
                  }
              
@@ -122,8 +119,6 @@ import java.util.Scanner;
        
                  
                  for (int i=0; i<espetaculoList.size();i++){
-                     
-                     
                          System.out.println(espetaculoList.get(i));
                  }
              
@@ -131,12 +126,54 @@ import java.util.Scanner;
              
                  break;
              case 7:
+             
+                 System.out.println("Intruduza o nome do espetaculo: \n");
+                 String nomeA = Ler.umaString();
+                 for (int i=0; i<espetaculoList.size();i++){
+                     
+                     if(espetaculoList.get(i).getNome().equals(nomeA))
+                         System.out.println(espetaculoList.get(i).getLotacao());
+                 }
                  break;
+                 
              case 8:
+                int somaL=0;
+                float mediaL;
+                for (int i=0; i<espetaculoList.size();i++){
+                        somaL = somaL + espetaculoList.get(i).getLotacao();
+                 }
+                 mediaL = somaL/(espetaculoList.size());
+                 System.out.println("A média de assisteência atual é: " +mediaL +"\n");
                  break;
+                 
              case 9:
+                float somaI=0;
+                float mediaI;
+                for (int i=0; i<espetaculoList.size();i++){
+                        somaI = somaI + (espetaculoList.get(i).getInvestimento());
+                 }
+                 mediaI = somaI/(espetaculoList.size());
+                 System.out.println("A média de investimento atual é: " +mediaI +"\n");
+                 
+                 
                  break;
              case 10:
+                float bruto;
+                float investimento; 
+                float lucro;
+                 System.out.println("Intruduza o nome do espetaculo: \n");
+                 String nomeB = Ler.umaString();
+                 for (int i=0; i<espetaculoList.size();i++){
+                     
+                     if(espetaculoList.get(i).getNome().equals(nomeB)){
+                        bruto = espetaculoList.get(i).getBruto();
+                        investimento = espetaculoList.get(i).getInvestimento();
+                        lucro = bruto - investimento;
+                        System.out.println("O lucro deste Espetáculo é: " +lucro +"€\n");
+                    }
+                        
+                         
+                 }
                  break;
              case 11:
                  break;
