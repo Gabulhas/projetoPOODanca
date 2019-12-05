@@ -1,6 +1,8 @@
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
-public class Espetaculo {
+public class Espetaculo implements Serializable {
     private String local;
     private String nome;
     private int lotacao;
@@ -21,8 +23,6 @@ public class Espetaculo {
         this.investimento = 0;
     }
     
-    
-    public Espetaculo(String nome,)
 
     public String getLocal() {
         return local;
@@ -86,6 +86,26 @@ public class Espetaculo {
 
     public void setInvestimento(float investimento) {
         this.investimento = investimento;
+    }
+
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Espetaculo other = (Espetaculo) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
