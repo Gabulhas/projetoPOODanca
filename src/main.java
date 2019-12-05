@@ -2,8 +2,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.io.PrintWriter;
 import java.util.Date;
-import myinputs.Ler;
 import java.util.Scanner;
+
     public class main {
 
 
