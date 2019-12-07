@@ -7,19 +7,17 @@ public class Tecnico implements Serializable{
     private int idade;
     private double salario;
     private float cc;
-    private String genero;
     private String especificacao;
     
 
     
-    public Tecnico(String nome,float cc){
+    public Tecnico(String nome,float cc,String especificacao,double salario,int idade){
 
         this.Nome= nome;
         this.cc=cc;
-        this.idade = 0;
-        this.salario= .0;
-        this.genero="";
-        this.especificacao="";
+        this.idade = idade;
+        this.salario= salario;    
+        this.especificacao=especificacao;
 
     }
     
@@ -60,13 +58,6 @@ public class Tecnico implements Serializable{
         this.cc = cc;
     }
 
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
 
     public String getEspecificacao() {
         return especificacao;
@@ -83,7 +74,7 @@ public class Tecnico implements Serializable{
                 ", idade=" + idade +
                 ", salario=" + salario +
                 ", cc=" + cc +
-                ", genero='" + genero + '\'' +
+               
                 ", especificacao='" + especificacao + '\'' +
                 '}';
     }

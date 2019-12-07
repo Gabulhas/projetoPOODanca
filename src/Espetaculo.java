@@ -1,9 +1,9 @@
-import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
-public class Espetaculo implements Serializable {
+public class Espetaculo implements Serializable{
     private String local;
     private String nome;
     private int lotacao;

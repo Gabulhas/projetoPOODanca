@@ -1,22 +1,23 @@
-
 import java.io.Serializable;
 
-public class Bailarino implements Serializable {
+//import java.io.Serializable;
+
+public class Bailarino implements Serializable{
 
     private String Nome;
     private int idade;
     private double salario;
     private float cc;
-    private String genero;
+   
 
     
-    public Bailarino(String nome,float cc, int idade,double salario, String genero){
+    public Bailarino(String nome,float cc, int idade,double salario){
 
         this.Nome= nome;
         this.cc=cc;
         this.idade = idade;
         this.salario= salario;
-        this.genero=genero;
+      
 
     }
     
@@ -55,14 +56,7 @@ public class Bailarino implements Serializable {
         this.cc = cc;
     }
 
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
+   
     @Override
     public String toString() {
         return "Bailarino\n" +
@@ -70,7 +64,7 @@ public class Bailarino implements Serializable {
                 ", idade=" + idade +
                 ", salario=" + salario +
                 ", cc=" + cc +
-                ", genero='" + genero + '\'' +
+                
                 '\n';
     }
 

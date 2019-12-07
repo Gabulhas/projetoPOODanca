@@ -1,21 +1,21 @@
 
-import java.io.Serializable;
+//import java.io.Serializable;
 import java.util.Objects;
 
-public class Coreografo implements Serializable {
+public class Coreografo implements Serializable{
     private String Nome;
     private int idade;
     private double salario;
     private float cc;
-    private String genero;
+    
 
-    public Coreografo(String nome,float cc){
+    public Coreografo(String nome,float cc,int idade,double salario){
 
         this.Nome= nome;
         this.cc=cc;
-        this.idade = 0;
-        this.salario= .0;
-        this.genero="";
+        this.idade = idade;
+        this.salario= salario;
+       
 
     }
 
@@ -51,14 +51,7 @@ public class Coreografo implements Serializable {
         this.cc = cc;
     }
 
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
+   
 
     @Override
     public String toString() {
@@ -66,8 +59,7 @@ public class Coreografo implements Serializable {
                 "Nome='" + Nome + '\'' +
                 ", idade=" + idade +
                 ", salario=" + salario +
-                ", cc=" + cc +
-                ", genero='" + genero + '\'';
+                ", cc=" + cc;
     }
 
     @Override
