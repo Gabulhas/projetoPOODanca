@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
@@ -12,20 +13,20 @@ public class Espetaculo implements Serializable{
     private String estiloDanca;
     private float bruto;
     private float investimento;
-    private ArrayList<Bailarino> bailarinos = new ArrayList<Bailarino>();
-    private ArrayList<Bailarino> coreografo = new ArrayList<Bailarino>();
-    private ArrayList<Bailarino> tecnicos = new ArrayList<Bailarino>();
+    private ArrayList<Bailarino> bailarinosEspetaculo = new ArrayList<Bailarino>();
+    private Coreografo coreografoEspetaculo;
+    private ArrayList<Tecnico> tecnicosEspetaculo = new ArrayList<Tecnico>();
 
 
-    public Espetaculo(String nome) {
-        this.local = "";
+    public Espetaculo(String nome,String local,int lotacao,Date data,float preço, String estiloDanca,float bruto, float investimento ) {
+        this.local = local;
         this.nome = nome;
-        this.lotacao = 0;
+        this.lotacao = lotacao;
         this.data = data;
-        this.preço = 0;
+        this.preço = preço;
         this.estiloDanca = "";
-        this.bruto = 0;
-        this.investimento = 0;
+        this.bruto = bruto;
+        this.investimento = investimento;
     }
     
 
@@ -91,6 +92,9 @@ public class Espetaculo implements Serializable{
 
     public void setInvestimento(float investimento) {
         this.investimento = investimento;
+    }
+    public ArrayList<Bailarino> getBailarinos(){
+        return bailarinos
     }
 
 

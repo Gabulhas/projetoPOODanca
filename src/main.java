@@ -13,69 +13,55 @@ import java.util.Scanner;
 //import jdk.javadoc.internal.doclets.formats.html.SourceToHTMLConverter;
 
 public class main {
-    static File espetaculos = new File("espetaculos.txt");
-    static File bailarinos = new File("bailarinos.txt");
-    static File coreografos = new File("coreografos.txt");
-    static File tecnicos = new File("tecnicos.txt");
-    static int n = 1;
-    static ArrayList<Espetaculo> espetaculoList = new ArrayList<Espetaculo>();
-    static ArrayList<Coreografo> coreografoList = new ArrayList<Coreografo>();
-    static ArrayList<Tecnico> tecnicoList = new ArrayList<Tecnico>();
-    static ArrayList<Bailarino> bailarinoList = new ArrayList<Bailarino>();
+    public static File espetaculos = new File("espetaculos.txt");
+    public static File bailarinos = new File("bailarinos.txt");
+    public static File coreografos = new File("coreografos.txt");
+    public static File tecnicos = new File("tecnicos.txt");
+    public static int n = 1;
+    public static ArrayList<Espetaculo> espetaculoList = new ArrayList<Espetaculo>();
+    public static ArrayList<Coreografo> coreografoList = new ArrayList<Coreografo>();
+    public static ArrayList<Tecnico> tecnicoList = new ArrayList<Tecnico>();
+    public static ArrayList<Bailarino> bailarinoList = new ArrayList<Bailarino>();
 
     public static void main(String[] args) throws IOException {
 
-        FileInputStream fis = new FileInputStream("bailarinos.txt");
-        ObjectInputStream ois = new ObjectInputStream(fis);
+        FileInputStream fis;
+        ObjectInputStream ois;
+        fis = new FileInputStream("bailarinos.txt");
+        ois = new ObjectInputStream(fis);
         try {
             bailarinoList = (ArrayList<Bailarino>) ois.readObject();
         } catch (ClassNotFoundException e) {
-           
-            e.printStackTrace();
-        } catch (IOException e) {
-            bailarinos.createNewFile();
-            
-            e.printStackTrace();
-        }
-        fis = new FileInputStream("coreografo.txt");
-        ois = new ObjectInputStream(fis);
-        try {
-            coreografoList = (ArrayList<Coreografo>) ois.readObject();
-        } catch (ClassNotFoundException e) {
-           
+
             e.printStackTrace();
         } catch (IOException e) {
             coreografos.createNewFile();
             bailarinos.createNewFile();
         }
-        
-        fis = new FileInputStream("espetaculos.txt");
-        ois = new ObjectInputStream(fis);
-        try {
-            espetaculoList = (ArrayList<Espetaculo>) ois.readObject();
-        } catch (ClassNotFoundException e) {
-           
-            e.printStackTrace();
-        } catch (IOException e) {
-            espetaculos.createNewFile();
-            
-            e.printStackTrace();
-        }
-        fis = new FileInputStream("tecnicos.txt");
-        ois = new ObjectInputStream(fis);
-        try {
-            tecnicoList = (ArrayList<Tecnico>) ois.readObject();
-        } catch (ClassNotFoundException e) {
-           
-            e.printStackTrace();
-        } catch (IOException e) {
-            tecnicos.createNewFile();
-            
-            e.printStackTrace();
-        }
-        
-        
 
+        /*
+         * fis = new FileInputStream("coreografo.txt"); ois = new
+         * ObjectInputStream(fis); try { coreografoList = (ArrayList<Coreografo>)
+         * ois.readObject(); } catch (ClassNotFoundException e) {
+         * 
+         * e.printStackTrace(); } catch (IOException e) { coreografos.createNewFile();
+         * bailarinos.createNewFile(); }
+         * 
+         * fis = new FileInputStream("espetaculos.txt"); ois = new
+         * ObjectInputStream(fis); try { espetaculoList = (ArrayList<Espetaculo>)
+         * ois.readObject(); } catch (ClassNotFoundException e) {
+         * 
+         * e.printStackTrace(); } catch (IOException e) { espetaculos.createNewFile();
+         * 
+         * e.printStackTrace(); } fis = new FileInputStream("tecnicos.txt"); ois = new
+         * ObjectInputStream(fis); try { tecnicoList = (ArrayList<Tecnico>)
+         * ois.readObject(); } catch (ClassNotFoundException e) {
+         * 
+         * e.printStackTrace(); } catch (IOException e) { tecnicos.createNewFile();
+         * 
+         * e.printStackTrace(); }
+         * 
+         */
 
         menu();
 
@@ -96,7 +82,7 @@ public class main {
             break;
         case 3:
             System.out.println("\n\n\n\n");
-            // gerirCoreografos();
+            gerirCoreografos();
             break;
         case 4:
             System.out.println("\n\n\n\n");
@@ -116,14 +102,49 @@ public class main {
     }
 
     public static void gerirEspetaculos() {
+        Scanner s = new Scanner(System.in);
         // Scanner s = new Scanner(System.in);
         System.out.println(
                 "========GERIR ESPETÁCULOS========\n1 - Criar Espetáculo\n2 - Remover Espetáculo\n3 - Consultar Espetáculo\n4 - Alterar Espetáculo\n5 - Consultar Investimento\n6 - Calcular Lucro\n7 - Consultar Lotação\n8 - Consultar numero total de Espetáculos\n9 - Listar todos os Espetáculos\n10 - Voltar Atrás");
+        switch (s.nextInt()) {
+        case 1:
+        
+
+            break;
+            case 2:
+        
+
+            break;
+
+            case 3:
+        
+
+            break;
+
+            case 4:
+        
+
+            break;
+
+            case 5:
+        
+
+            break;
+
+            case 6:
+        
+
+            break;
+
+
+
+        default:
+            break;
+        }
 
     }
 
     public static void gerirBailarinos() {
-        Scanner s = new Scanner(System.in);
 
         System.out.println(
                 "========GERIR BAILARINOS========\n1 - Adicionar Bailarino\n2 - Remover Bailarino\n3 - Consultar Bailarino\n4 - Alterar Bailarino\n5 - Alterar Salario\n6 - Consultar numero total de Bailarinos\n7 - Listar todos os Bailarinos\n8 - Voltar Atrás");
@@ -142,7 +163,6 @@ public class main {
 
             System.out.println("Salario [DEFAULT:1000€]:\n");
             double salario = s.nextDouble();
-            System.out.println(salario + " debugger");
 
             // remover genero para facilitar e inicializar com salario base por exemplo
             // 1000€
@@ -229,7 +249,7 @@ public class main {
 
             System.out.println("Escolher bailarino a partir do \n1 - Nome\n2 - CC\n\n3 - Voltar atrás");
             Bailarino aAlterar = new Bailarino("", 0, 0, 0);
-            int indexaAlterar=0;
+            int indexaAlterar = 0;
             switch (s.nextInt()) {
 
             case 1:
@@ -237,7 +257,7 @@ public class main {
                 String nomeConsultar = s.next();
                 for (int i = 0; i < bailarinoList.size(); i++) {
                     if (bailarinoList.get(i).getNome() == nomeConsultar) {
-                        indexaAlterar=i;
+                        indexaAlterar = i;
                     }
 
                 }
@@ -248,7 +268,7 @@ public class main {
                 float ccConsultar = s.nextFloat();
                 for (int i = 0; i < bailarinoList.size(); i++) {
                     if (bailarinoList.get(i).getCc() == ccConsultar) {
-                        indexaAlterar=i;
+                        indexaAlterar = i;
                     }
 
                 }
@@ -261,27 +281,27 @@ public class main {
             switch (s.nextInt()) {
             case 1:
                 System.out.println("Nome: ");
-                
+
                 bailarinoList.get(indexaAlterar).setNome(s.next());
                 gerirBailarinos();
 
                 break;
             case 2:
-            System.out.println("Idade: ");
-            bailarinoList.get(indexaAlterar).setIdade(s.nextInt());
-            gerirBailarinos();
+                System.out.println("Idade: ");
+                bailarinoList.get(indexaAlterar).setIdade(s.nextInt());
+                gerirBailarinos();
 
                 break;
             case 3:
-            System.out.println("CC: ");
-            bailarinoList.get(indexaAlterar).setCc(s.nextFloat());
-            gerirBailarinos();
+                System.out.println("CC: ");
+                bailarinoList.get(indexaAlterar).setCc(s.nextFloat());
+                gerirBailarinos();
 
                 break;
             case 4:
-            System.out.println("Salario");
-            bailarinoList.get(indexaAlterar).setSalario(s.nextDouble());
-            gerirBailarinos();
+                System.out.println("Salario");
+                bailarinoList.get(indexaAlterar).setSalario(s.nextDouble());
+                gerirBailarinos();
 
                 break;
 
@@ -292,7 +312,7 @@ public class main {
 
         case 5:
             System.out.println("Escolher bailarino a partir do \n1 - Nome\n2 - CC\n\n3 - Voltar atrás");
-            int indexaAlterarSalario=0;
+            int indexaAlterarSalario = 0;
             switch (s.nextInt()) {
 
             case 1:
@@ -300,7 +320,7 @@ public class main {
                 String nomeConsultar = s.next();
                 for (int i = 0; i < bailarinoList.size(); i++) {
                     if (bailarinoList.get(i).getNome() == nomeConsultar) {
-                        indexaAlterarSalario=i;
+                        indexaAlterarSalario = i;
                     }
 
                 }
@@ -311,7 +331,7 @@ public class main {
                 float ccConsultar = s.nextFloat();
                 for (int i = 0; i < bailarinoList.size(); i++) {
                     if (bailarinoList.get(i).getCc() == ccConsultar) {
-                        indexaAlterarSalario=i;
+                        indexaAlterarSalario = i;
                     }
 
                 }
@@ -322,36 +342,36 @@ public class main {
             System.out.println("Salario Atual: " + bailarinoList.get(indexaAlterarSalario).getSalario());
             System.out.println(
                     "1 - Aumentar a Partir de percentagem\n2 - Aumentar a Partir de um valor\n3 - Diminuir a Partir de percentagem\n4 - Diminuir a Partir de um valor\n5 - Alterar Salario\n\n6 - Voltar Atrás");
-            double percentagem=0;
-            double salarioA=0;
+            double percentagem = 0;
+            double salarioA = 0;
             switch (s.nextInt()) {
-            
+
             case 1:
                 System.out.println("Percentagem: ");
-                percentagem=s.nextDouble();
-                salarioA= bailarinoList.get(indexaAlterarSalario).getSalario();
-                bailarinoList.get(indexaAlterarSalario).setSalario(salarioA+salarioA*(percentagem/100));
+                percentagem = s.nextDouble();
+                salarioA = bailarinoList.get(indexaAlterarSalario).getSalario();
+                bailarinoList.get(indexaAlterarSalario).setSalario(salarioA + salarioA * (percentagem / 100));
                 break;
             case 2:
                 System.out.println("Valor: ");
-                salarioA=bailarinoList.get(indexaAlterarSalario).getSalario()+s.nextDouble();
+                salarioA = bailarinoList.get(indexaAlterarSalario).getSalario() + s.nextDouble();
                 bailarinoList.get(indexaAlterarSalario).setSalario(salarioA);
 
                 break;
             case 3:
                 System.out.println("Percentagem: ");
-                
-                percentagem=s.nextDouble();
-                salarioA= bailarinoList.get(indexaAlterarSalario).getSalario();
-                bailarinoList.get(indexaAlterarSalario).setSalario(salarioA-salarioA*(percentagem/100));
+
+                percentagem = s.nextDouble();
+                salarioA = bailarinoList.get(indexaAlterarSalario).getSalario();
+                bailarinoList.get(indexaAlterarSalario).setSalario(salarioA - salarioA * (percentagem / 100));
                 break;
             case 4:
                 System.out.println("Valor: ");
-                salarioA=bailarinoList.get(indexaAlterarSalario).getSalario()-s.nextDouble();
+                salarioA = bailarinoList.get(indexaAlterarSalario).getSalario() - s.nextDouble();
                 bailarinoList.get(indexaAlterarSalario).setSalario(salarioA);
 
                 break;
-                case 5:
+            case 5:
                 System.out.println("Valor: ");
                 bailarinoList.get(indexaAlterarSalario).setSalario(s.nextDouble());
 
@@ -388,11 +408,10 @@ public class main {
     }
 
     public static void gerirCoreografos() {
-
         Scanner s = new Scanner(System.in);
 
         System.out.println(
-                "========GERIR COREÓGRAFOS========\n1 - Adicionar Coreógrafo\n2 - Remover Coreógrafo\n3 - Consultar Coreógrafo\n4 - Alterar Coreógrafo\n5 - Alterar Salario Base\n6 - Consultar numero total de Coreógrafos\n7 - Listar todos os Coreógrafos\n8 - Voltar Atrás");
+                "========GERIR COREOGRAFOS========\n1 - Adicionar Coreografo\n2 - Remover Coreografo\n3 - Consultar Coreografo\n4 - Alterar Coreografo\n5 - Alterar Salario\n6 - Consultar numero total de Coreografos\n7 - Listar todos os Coreografos\n8 - Voltar Atrás");
         switch (s.nextInt()) {
         case 1:
             Coreografo x;
@@ -401,10 +420,11 @@ public class main {
             String nome = s.next(); // = nome lido ;
             System.out.println("Numero de Identificação:\n");
             // Ler cc
-            float cc = s.nextFloat(); // = cc lido ;
+            long cc = s.nextLong(); // = cc lido ;
             System.out.println("Idade:\n");
             // Ler idade
-            int idade = s.nextInt(); // = idade lido ;
+            int idade = s.nextInt();// = idade lido ;
+
             System.out.println("Salario [DEFAULT:1000€]:\n");
             double salario = s.nextDouble();
 
@@ -412,8 +432,10 @@ public class main {
             // 1000€
 
             x = new Coreografo(nome, cc, idade, salario); // no construtor deves diminuir os parametros para apenas
-                                                          // estes (facilitar trabalho)
+                                                          // estes
+                                                          // (facilitar trabalho)
             coreografoList.add(x);
+            writeToFileCoreografo();
             break;
         case 2:
             System.out.println("Remover a partir do \n1 - Nome\n2 - CC\n\n3 - Voltar atrás");
@@ -423,9 +445,9 @@ public class main {
             case 1:
                 System.out.println("Nome:\n");
                 String nomeRemover = s.next();
-                for (int i = 0; i < bailarinoList.size(); i++) {
-                    if (bailarinoList.get(i).getNome() == nomeRemover) {
-                        bailarinoList.remove(i);
+                for (int i = 0; i < coreografoList.size(); i++) {
+                    if (coreografoList.get(i).getNome() == nomeRemover) {
+                        coreografoList.remove(i);
                     }
 
                 }
@@ -434,9 +456,9 @@ public class main {
             case 2:
                 System.out.println("CC:\n");
                 float ccRemover = s.nextFloat();
-                for (int i = 0; i < bailarinoList.size(); i++) {
-                    if (bailarinoList.get(i).getCc() == ccRemover) {
-                        bailarinoList.remove(i);
+                for (int i = 0; i < coreografoList.size(); i++) {
+                    if (coreografoList.get(i).getCc() == ccRemover) {
+                        coreografoList.remove(i);
                     }
 
                 }
@@ -444,27 +466,26 @@ public class main {
                 break;
 
             default:
-                gerirBailarinos();
+                gerirCoreografos();
                 break;
 
             }
+            writeToFileCoreografo();
 
             break;
 
         case 3:
-            System.out.println("Intruduza o nome do coreógrafo que quer consular: \n");
-            // ler nome
 
             System.out.println("Consultar a partir do \n1 - Nome\n2 - CC\n\n3 - Voltar atrás");
             // ler nome
             // = nome lido
-            switch (n) {
+            switch (s.nextInt()) {
 
             case 1:
                 System.out.println("Nome:\n");
                 String nomeConsultar = s.next();
                 for (int i = 0; i < coreografoList.size(); i++) {
-                    if (coreografoList.get(i).getNome() == nomeConsultar) {
+                    if (coreografoList.get(i).getNome().equals(nomeConsultar)) {
                         System.out.println(coreografoList.get(i));
                     }
 
@@ -484,47 +505,156 @@ public class main {
                 break;
 
             default:
-                gerirBailarinos();
+                gerirCoreografos();
                 break;
 
             }
             break;
-
         case 4:
-            // para este case sugiro fazermos outro menu para escolher qual dos parametros
-            // (nome idade salario ou cc)quer alterar e depois alterar
-            break;
+
+            System.out.println("Escolher coreografo a partir do \n1 - Nome\n2 - CC\n\n3 - Voltar atrás");
+            Coreografo aAlterar = new Coreografo("", 0, 0, 0);
+            int indexaAlterar = 0;
+            switch (s.nextInt()) {
+
+            case 1:
+                System.out.println("Nome:\n");
+                String nomeConsultar = s.next();
+                for (int i = 0; i < coreografoList.size(); i++) {
+                    if (coreografoList.get(i).getNome() == nomeConsultar) {
+                        indexaAlterar = i;
+                    }
+
+                }
+
+                break;
+            case 2:
+                System.out.println("CC:\n");
+                float ccConsultar = s.nextFloat();
+                for (int i = 0; i < coreografoList.size(); i++) {
+                    if (coreografoList.get(i).getCc() == ccConsultar) {
+                        indexaAlterar = i;
+                    }
+
+                }
+
+                break;
+
+            }
+            System.out.println("Coreografo a alterar: " + coreografoList.get(indexaAlterar));
+            System.out.println("O que deseja alterar:\n1 - Nome\n2 - Idade\n3 - CC\n4 - Salario\n\n5 - Voltar Atrás");
+            switch (s.nextInt()) {
+            case 1:
+                System.out.println("Nome: ");
+
+                coreografoList.get(indexaAlterar).setNome(s.next());
+                gerirCoreografos();
+
+                break;
+            case 2:
+                System.out.println("Idade: ");
+                coreografoList.get(indexaAlterar).setIdade(s.nextInt());
+                gerirCoreografos();
+
+                break;
+            case 3:
+                System.out.println("CC: ");
+                coreografoList.get(indexaAlterar).setCc(s.nextFloat());
+                gerirCoreografos();
+
+                break;
+            case 4:
+                System.out.println("Salario");
+                coreografoList.get(indexaAlterar).setSalario(s.nextDouble());
+                gerirCoreografos();
+
+                break;
+
+            default:
+                gerirCoreografos();
+                break;
+            }
 
         case 5:
-            double salarioBase = 0;
-            double perc = 0;
-            int n = 0;
-            System.out.println("Pretende diminuir ou aumentar o salário? \n");
-            System.out.println("Introduza 0 para diminuir ou 1 para aumentar: ");
+            System.out.println("Escolher coreografo a partir do \n1 - Nome\n2 - CC\n\n3 - Voltar atrás");
+            int indexaAlterarSalario = 0;
+            switch (s.nextInt()) {
 
-            // ler int
-            if (n == 1) {
-                System.out.println("Introduza a percentagem de salario a aumentar: ");
-                // perc = ler percentagem;
-                salarioBase = salarioBase + (salarioBase * perc) / 100.0;
+            case 1:
+                System.out.println("Nome:\n");
+                String nomeConsultar = s.next();
+                for (int i = 0; i < coreografoList.size(); i++) {
+                    if (coreografoList.get(i).getNome() == nomeConsultar) {
+                        indexaAlterarSalario = i;
+                    }
+
+                }
+
+                break;
+            case 2:
+                System.out.println("CC:\n");
+                float ccConsultar = s.nextFloat();
+                for (int i = 0; i < coreografoList.size(); i++) {
+                    if (coreografoList.get(i).getCc() == ccConsultar) {
+                        indexaAlterarSalario = i;
+                    }
+
+                }
+
+                break;
+
             }
-            if (n == 0) {
-                System.out.println("Introduza a percentagem de salario a diminuir: ");
-                // perc = ler percentagem;
-                salarioBase = salarioBase - (salarioBase * perc) / 100.0;
-            } else
-                System.out.println("Introduza 0 para diminuir ou 1 para aumentar: ");
-            // ler int
-            break;
+            System.out.println("Salario Atual: " + coreografoList.get(indexaAlterarSalario).getSalario());
+            System.out.println(
+                    "1 - Aumentar a Partir de percentagem\n2 - Aumentar a Partir de um valor\n3 - Diminuir a Partir de percentagem\n4 - Diminuir a Partir de um valor\n5 - Alterar Salario\n\n6 - Voltar Atrás");
+            double percentagem = 0;
+            double salarioA = 0;
+            switch (s.nextInt()) {
+
+            case 1:
+                System.out.println("Percentagem: ");
+                percentagem = s.nextDouble();
+                salarioA = coreografoList.get(indexaAlterarSalario).getSalario();
+                coreografoList.get(indexaAlterarSalario).setSalario(salarioA + salarioA * (percentagem / 100));
+                break;
+            case 2:
+                System.out.println("Valor: ");
+                salarioA = coreografoList.get(indexaAlterarSalario).getSalario() + s.nextDouble();
+                coreografoList.get(indexaAlterarSalario).setSalario(salarioA);
+
+                break;
+            case 3:
+                System.out.println("Percentagem: ");
+
+                percentagem = s.nextDouble();
+                salarioA = coreografoList.get(indexaAlterarSalario).getSalario();
+                coreografoList.get(indexaAlterarSalario).setSalario(salarioA - salarioA * (percentagem / 100));
+                break;
+            case 4:
+                System.out.println("Valor: ");
+                salarioA = coreografoList.get(indexaAlterarSalario).getSalario() - s.nextDouble();
+                coreografoList.get(indexaAlterarSalario).setSalario(salarioA);
+
+                break;
+            case 5:
+                System.out.println("Valor: ");
+                coreografoList.get(indexaAlterarSalario).setSalario(s.nextDouble());
+
+                break;
+            default:
+                gerirCoreografos();
+                break;
+
+            }
 
         case 6:
             int numTotal = coreografoList.size();
-            System.out.println("Número total de Coreógrafos: " + numTotal + "\n");
+            System.out.println("Número total de Coreografos: " + numTotal + "\n");
 
             break;
 
         case 7:
-            for (int i = 0; i < bailarinoList.size(); i++)
+            for (int i = 0; i < coreografoList.size(); i++)
                 System.out.println(coreografoList.get(i));
 
             break;
@@ -537,7 +667,8 @@ public class main {
             menu();
             break;
         }
-        s.close();
+
+        gerirCoreografos();
 
     }
 
@@ -545,7 +676,7 @@ public class main {
         Scanner s = new Scanner(System.in);
 
         System.out.println(
-                "========GERIR TÉCNICOS========\n1 - Adicionar Técnico\n2 - Remover Técnico\n3 - Consultar Técnico\n4 - Alterar Técnico\n5 - Alterar Salario Base\n6 - Consultar numero total de Técnicos\n7 - Listar todos os Técnicos\n8 - Voltar Atrás");
+                "========GERIR COREOGRAFOS========\n1 - Adicionar Tecnico\n2 - Remover Tecnico\n3 - Consultar Tecnico\n4 - Alterar Tecnico\n5 - Alterar Salario\n6 - Consultar numero total de Tecnicos\n7 - Listar todos os Tecnicos\n8 - Listar Tecnicos por especificação\n9 - Voltar Atrás");
         switch (s.nextInt()) {
         case 1:
             Tecnico x;
@@ -554,60 +685,239 @@ public class main {
             String nome = s.next(); // = nome lido ;
             System.out.println("Numero de Identificação:\n");
             // Ler cc
-            float cc = s.nextFloat(); // = cc lido ;
+            long cc = s.nextLong(); // = cc lido ;
             System.out.println("Idade:\n");
             // Ler idade
-            int idade = s.nextInt(); // = idade lido ;
-            System.out.println("Especificação:\n");
-            // Ler especialidade
-            String especificacao = s.next(); // = espec lida ;
+            int idade = s.nextInt();// = idade lido ;
+
             System.out.println("Salario [DEFAULT:1000€]:\n");
             double salario = s.nextDouble();
+
+            System.out.println("Especificação");
+            String especificacao = s.next();
+
             // remover genero para facilitar e inicializar com salario base por exemplo
             // 1000€
 
-            x = new Tecnico(nome, cc, especificacao, salario, idade); // no construtor deves diminuir os parametros para
-                                                                      // apenas estes (facilitar trabalho)
+            x = new Tecnico(nome, cc, especificacao, salario, idade);// no construtor deves diminuir os parametros para
+                                                                     // apenas estes
+            // (facilitar trabalho)
             tecnicoList.add(x);
+            writeToFileTecnicos();
             break;
         case 2:
+            System.out.println("Remover a partir do \n1 - Nome\n2 - CC\n\n3 - Voltar atrás");
+            n = s.nextInt();
+            switch (n) {
+
+            case 1:
+                System.out.println("Nome:\n");
+                String nomeRemover = s.next();
+                for (int i = 0; i < tecnicoList.size(); i++) {
+                    if (tecnicoList.get(i).getNome() == nomeRemover) {
+                        tecnicoList.remove(i);
+                    }
+
+                }
+
+                break;
+            case 2:
+                System.out.println("CC:\n");
+                float ccRemover = s.nextFloat();
+                for (int i = 0; i < tecnicoList.size(); i++) {
+                    if (tecnicoList.get(i).getCc() == ccRemover) {
+                        tecnicoList.remove(i);
+                    }
+
+                }
+
+                break;
+
+            default:
+                gerirTecnicos();
+                break;
+
+            }
+            writeToFileTecnicos();
 
             break;
 
         case 3:
 
-            break;
+            System.out.println("Consultar a partir do \n1 - Nome\n2 - CC\n\n3 - Voltar atrás");
+            // ler nome
+            // = nome lido
+            switch (s.nextInt()) {
 
-        case 4:
-            // para este case sugiro fazermos outro menu para escolher qual dos parametros
-            // (nome idade salario especificacao ou cc)quer alterar e depois alterar
+            case 1:
+                System.out.println("Nome:\n");
+                String nomeConsultar = s.next();
+                for (int i = 0; i < tecnicoList.size(); i++) {
+                    if (tecnicoList.get(i).getNome().equals(nomeConsultar)) {
+                        System.out.println(tecnicoList.get(i));
+                    }
+
+                }
+
+                break;
+            case 2:
+                System.out.println("CC:\n");
+                float ccConsultar = s.nextFloat();
+                for (int i = 0; i < tecnicoList.size(); i++) {
+                    if (tecnicoList.get(i).getCc() == ccConsultar) {
+                        System.out.println(tecnicoList.get(i));
+                    }
+
+                }
+
+                break;
+
+            default:
+                gerirTecnicos();
+                break;
+
+            }
             break;
+        case 4:
+
+            System.out.println("Escolher tecnico a partir do \n1 - Nome\n2 - CC\n\n3 - Voltar atrás");
+            Tecnico aAlterar = new Tecnico("", 0, "", 0, 0);
+            int indexaAlterar = 0;
+            switch (s.nextInt()) {
+
+            case 1:
+                System.out.println("Nome:\n");
+                String nomeConsultar = s.next();
+                for (int i = 0; i < tecnicoList.size(); i++) {
+                    if (tecnicoList.get(i).getNome() == nomeConsultar) {
+                        indexaAlterar = i;
+                    }
+
+                }
+
+                break;
+            case 2:
+                System.out.println("CC:\n");
+                float ccConsultar = s.nextFloat();
+                for (int i = 0; i < tecnicoList.size(); i++) {
+                    if (tecnicoList.get(i).getCc() == ccConsultar) {
+                        indexaAlterar = i;
+                    }
+
+                }
+
+                break;
+
+            }
+            System.out.println("Tecnico a alterar: " + tecnicoList.get(indexaAlterar));
+            System.out.println("O que deseja alterar:\n1 - Nome\n2 - Idade\n3 - CC\n4 - Salario\n\n5 - Voltar Atrás");
+            switch (s.nextInt()) {
+            case 1:
+                System.out.println("Nome: ");
+
+                tecnicoList.get(indexaAlterar).setNome(s.next());
+                gerirTecnicos();
+
+                break;
+            case 2:
+                System.out.println("Idade: ");
+                tecnicoList.get(indexaAlterar).setIdade(s.nextInt());
+                gerirTecnicos();
+
+                break;
+            case 3:
+                System.out.println("CC: ");
+                tecnicoList.get(indexaAlterar).setCc(s.nextFloat());
+                gerirTecnicos();
+
+                break;
+            case 4:
+                System.out.println("Salario");
+                tecnicoList.get(indexaAlterar).setSalario(s.nextDouble());
+                gerirTecnicos();
+
+                break;
+
+            default:
+                gerirTecnicos();
+                break;
+            }
 
         case 5:
-            double salarioBase = 0;
-            double perc = 0;
-            int n = 0;
-            System.out.println("Pretende diminuir ou aumentar o salário? \n");
-            System.out.println("Introduza 0 para diminuir ou 1 para aumentar: ");
+            System.out.println("Escolher tecnico a partir do \n1 - Nome\n2 - CC\n\n3 - Voltar atrás");
+            int indexaAlterarSalario = 0;
+            switch (s.nextInt()) {
 
-            // ler int
-            if (n == 1) {
-                System.out.println("Introduza a percentagem de salario a aumentar: ");
-                // perc = ler percentagem;
-                salarioBase = salarioBase + (salarioBase * perc) / 100.0;
+            case 1:
+                System.out.println("Nome:\n");
+                String nomeConsultar = s.next();
+                for (int i = 0; i < tecnicoList.size(); i++) {
+                    if (tecnicoList.get(i).getNome() == nomeConsultar) {
+                        indexaAlterarSalario = i;
+                    }
+
+                }
+
+                break;
+            case 2:
+                System.out.println("CC:\n");
+                float ccConsultar = s.nextFloat();
+                for (int i = 0; i < tecnicoList.size(); i++) {
+                    if (tecnicoList.get(i).getCc() == ccConsultar) {
+                        indexaAlterarSalario = i;
+                    }
+
+                }
+
+                break;
+
             }
-            if (n == 0) {
-                System.out.println("Introduza a percentagem de salario a diminuir: ");
-                // perc = ler percentagem;
-                salarioBase = salarioBase - (salarioBase * perc) / 100.0;
-            } else
-                System.out.println("Introduza 0 para diminuir ou 1 para aumentar: ");
-            // ler int
-            break;
+            System.out.println("Salario Atual: " + tecnicoList.get(indexaAlterarSalario).getSalario());
+            System.out.println(
+                    "1 - Aumentar a Partir de percentagem\n2 - Aumentar a Partir de um valor\n3 - Diminuir a Partir de percentagem\n4 - Diminuir a Partir de um valor\n5 - Alterar Salario\n\n6 - Voltar Atrás");
+            double percentagem = 0;
+            double salarioA = 0;
+            switch (s.nextInt()) {
+
+            case 1:
+                System.out.println("Percentagem: ");
+                percentagem = s.nextDouble();
+                salarioA = tecnicoList.get(indexaAlterarSalario).getSalario();
+                tecnicoList.get(indexaAlterarSalario).setSalario(salarioA + salarioA * (percentagem / 100));
+                break;
+            case 2:
+                System.out.println("Valor: ");
+                salarioA = tecnicoList.get(indexaAlterarSalario).getSalario() + s.nextDouble();
+                tecnicoList.get(indexaAlterarSalario).setSalario(salarioA);
+
+                break;
+            case 3:
+                System.out.println("Percentagem: ");
+
+                percentagem = s.nextDouble();
+                salarioA = tecnicoList.get(indexaAlterarSalario).getSalario();
+                tecnicoList.get(indexaAlterarSalario).setSalario(salarioA - salarioA * (percentagem / 100));
+                break;
+            case 4:
+                System.out.println("Valor: ");
+                salarioA = tecnicoList.get(indexaAlterarSalario).getSalario() - s.nextDouble();
+                tecnicoList.get(indexaAlterarSalario).setSalario(salarioA);
+
+                break;
+            case 5:
+                System.out.println("Valor: ");
+                tecnicoList.get(indexaAlterarSalario).setSalario(s.nextDouble());
+
+                break;
+            default:
+                gerirTecnicos();
+                break;
+
+            }
 
         case 6:
             int numTotal = tecnicoList.size();
-            System.out.println("Número total de Técnicos: " + numTotal + "\n");
+            System.out.println("Número total de Tecnicos: " + numTotal + "\n");
 
             break;
 
@@ -618,14 +928,23 @@ public class main {
             break;
 
         case 8:
-            menu();
+            System.out.println("Especificação:");
+            String temp = s.next();
+
+            for (int i = 0; i < tecnicoList.size(); i++) {
+                if (tecnicoList.get(i).getEspecificacao().equals(temp)) {
+                    System.out.println(tecnicoList.get(i));
+                }
+
+            }
             break;
 
         default:
             menu();
             break;
         }
-        s.close();
+
+        gerirTecnicos();
 
     }
 
@@ -693,43 +1012,46 @@ public class main {
 
     }
 
-    public static void writeToFileBailarinos(){
+    public static void writeToFileBailarinos() {
         try {
             FileOutputStream fos = new FileOutputStream(bailarinos);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);   
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(bailarinoList); // write MenuArray to ObjectOutputStream
-            oos.close(); 
-        } catch(Exception ex) {
+            oos.close();
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-    public static void writeToFileCoreografo(){
+
+    public static void writeToFileCoreografo() {
         try {
             FileOutputStream fos = new FileOutputStream(coreografos);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);   
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(coreografoList); // write MenuArray to ObjectOutputStream
-            oos.close(); 
-        } catch(Exception ex) {
+            oos.close();
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-    public static void writeToFileTecnicos(){
+
+    public static void writeToFileTecnicos() {
         try {
             FileOutputStream fos = new FileOutputStream(tecnicos);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);   
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(tecnicoList); // write MenuArray to ObjectOutputStream
-            oos.close(); 
-        } catch(Exception ex) {
+            oos.close();
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-    public static void writeToFileEspetaculos(){
+
+    public static void writeToFileEspetaculos() {
         try {
             FileOutputStream fos = new FileOutputStream(espetaculos);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);   
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(espetaculoList); // write MenuArray to ObjectOutputStream
-            oos.close(); 
-        } catch(Exception ex) {
+            oos.close();
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }

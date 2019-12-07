@@ -1,5 +1,6 @@
 
 //import java.io.Serializable;
+import java.io.Serializable;
 import java.util.Objects;
 
 public class Coreografo implements Serializable{
