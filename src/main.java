@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.io.PrintWriter;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -87,7 +88,7 @@ public class main {
             break;
         case 4:
             System.out.println("\n\n\n\n");
-            // gerirTecnicos();
+            gerirTecnicos();
             break;
         case 5:
             System.out.println("\n\n\n\n");
@@ -103,6 +104,7 @@ public class main {
     }
 
     public static void gerirEspetaculos() {
+        Espetaculo x;
         Scanner s = new Scanner(System.in);
         // Scanner s = new Scanner(System.in);
         System.out.println(
@@ -115,11 +117,24 @@ public class main {
         String local= s.next();
         System.out.println("Lotacao:\n");
         int lotacao= s.nextInt();
-        System.out.println("Data (Com o formato DIA-MES-ANO HORAS:MINUTOS):\n");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm");
-        Date data= dateFormat.parse(s.next());
+        System.out.println("Data (Com o formato DIA-MES-ANO HORAS:MINUTOS:SEGUNDOS):\n");
+       Date data = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+            Boolean t = true;
+            while(t){
+                
+        try{
+            data= dateFormat.parse(s.next());
+            t=false;
+        }
+        catch(ParseException e){
+            System.out.println("HFJSKF");
+            t=true;
+
+        }
+            }
         System.out.println("Preço dos Bilhetes");
-        String preço= s.next();
+        Float preço= s.nextFloat();
         System.out.println("Estilo de danca:\n");
         String estiloDanca= s.next();
         System.out.println("Bruto:\n");
@@ -127,11 +142,117 @@ public class main {
         System.out.println("Investimento:\n");
         Float investimento= s.nextFloat();
         
-        new Espetaculo(nome, local, lotacao, data, preço, estiloDanca, bruto, investimento)
+        x= new Espetaculo(nome, local, lotacao, data, preço, estiloDanca, bruto, investimento);
+        System.out.println("Escolher Coreografo A partir de:\n1 - Nome\n2 - CC:\n");
+        switch (s.nextInt()) {
+
+            case 1:
+                System.out.println("Nome:\n");
+                String nomeProcurar = s.next();
+                for (int i = 0; i < coreografoList.size(); i++) {
+                    if (coreografoList.get(i).getNome().equals(nomeProcurar)) {
+                        x.setCoreografoEspetaculo(coreografoList.get(i));
+                    }
+
+                }
+
+                break;
+            case 2:
+                System.out.println("CC:\n");
+                float ccProcurar = s.nextFloat();
+                for (int i = 0; i < coreografoList.size(); i++) {
+                    if (coreografoList.get(i).getCc()==ccProcurar) {
+                        x.setCoreografoEspetaculo(coreografoList.get(i));
+                    }
+
+                }
+
+                break;
+
+            }
+            System.out.println("Quantos Bailarinos irão participar?");
+            int nBailarinos= s.nextInt();
+            ArrayList <Bailarino> tempBailarinos=new ArrayList<Bailarino>();
+            for(int a=0; a<nBailarinos;a++){
+
+                System.out.print((a+1)+"º Bailarino: Procurar por:1 - Nome\n2 - CC");
+                switch (s.nextInt()) {
+
+                    case 1:
+                        System.out.println("Nome:\n");
+                        String nomeConsultar = s.next();
+                        for (a = 0; a < bailarinoList.size(); a++) {
+                            if (bailarinoList.get(a).getNome().equals(nomeConsultar)) {
+                                tempBailarinos.add(bailarinoList.get(a));
+                            }
+        
+                        }
+        
+                        break;
+                    case 2:
+                        System.out.println("CC:\n");
+                        float ccConsultar = s.nextFloat();
+                        for (a= 0; a < bailarinoList.size(); a++) {
+                            if (bailarinoList.get(a).getCc() == ccConsultar) {
+                                tempBailarinos.add(bailarinoList.get(a));
+                            }
+        
+                        }
+        
+                        break;
+        
+                    }
+                    x.setBailarinosEspetaculo(tempBailarinos);
+                    System.out.println("Quantos Técnicos Estarão em serviço?");
+                    ArrayList<Tecnico> tempTecnicos= new ArrayList<Tecnico>();
+                    int nTecnicos = s.nextInt();
+                    for(int b = 0; b<nTecnicos;b++){
+                        System.out.print((b+1)+"º Tecnico: Procurar por:1 - Nome\n2 - CC");
+
+                        switch (s.nextInt()) {
+
+                            case 1:
+                                System.out.println("Nome:\n");
+                                String nomeConsultar = s.next();
+                                for (int i = 0; i < tecnicoList.size(); i++) {
+                                    if (tecnicoList.get(i).getNome().equals(nomeConsultar)) {
+                                        tempTecnicos.add(tecnicoList.get(i));
+                                    }
+                
+                                }
+                
+                                break;
+                            case 2:
+                                System.out.println("CC:\n");
+                                float ccConsultar = s.nextFloat();
+                                for (int i = 0; i < tecnicoList.size(); i++) {
+                                    if (tecnicoList.get(i).getCc() == ccConsultar) {
+                                        tempTecnicos.add(tecnicoList.get(i));
+                                    }
+                
+                                }
+                
+                                break;
+                
+                            default:
+                                gerirTecnicos();
+                                break;
+                
+                            }
+                    }
+
+
+
+
+
+
+            }
         
 
             break;
             case 2:
+
+            
         
 
             break;
@@ -165,7 +286,7 @@ public class main {
     }
 
     public static void gerirBailarinos() {
-
+        Scanner s = new Scanner(System.in);
         System.out.println(
                 "========GERIR BAILARINOS========\n1 - Adicionar Bailarino\n2 - Remover Bailarino\n3 - Consultar Bailarino\n4 - Alterar Bailarino\n5 - Alterar Salario\n6 - Consultar numero total de Bailarinos\n7 - Listar todos os Bailarinos\n8 - Voltar Atrás");
         switch (s.nextInt()) {
