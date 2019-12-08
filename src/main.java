@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -108,6 +109,25 @@ public class main {
                 "========GERIR ESPETÁCULOS========\n1 - Criar Espetáculo\n2 - Remover Espetáculo\n3 - Consultar Espetáculo\n4 - Alterar Espetáculo\n5 - Consultar Investimento\n6 - Calcular Lucro\n7 - Consultar Lotação\n8 - Consultar numero total de Espetáculos\n9 - Listar todos os Espetáculos\n10 - Voltar Atrás");
         switch (s.nextInt()) {
         case 1:
+        System.out.println("Nome:\n");
+        String nome= s.next();
+        System.out.println("Local:\n");
+        String local= s.next();
+        System.out.println("Lotacao:\n");
+        int lotacao= s.nextInt();
+        System.out.println("Data (Com o formato DIA-MES-ANO HORAS:MINUTOS):\n");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+        Date data= dateFormat.parse(s.next());
+        System.out.println("Preço dos Bilhetes");
+        String preço= s.next();
+        System.out.println("Estilo de danca:\n");
+        String estiloDanca= s.next();
+        System.out.println("Bruto:\n");
+        Float bruto= s.nextFloat();
+        System.out.println("Investimento:\n");
+        Float investimento= s.nextFloat();
+        
+        new Espetaculo(nome, local, lotacao, data, preço, estiloDanca, bruto, investimento)
         
 
             break;
