@@ -7,9 +7,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 //import jdk.javadoc.internal.doclets.formats.html.SourceToHTMLConverter;
@@ -37,33 +41,46 @@ public class main {
 
             e.printStackTrace();
         } catch (IOException e) {
-            coreografos.createNewFile();
-            bailarinos.createNewFile();
+            e.printStackTrace();
+        }
+        
+        fis = new FileInputStream("espetaculos.txt");
+        ois = new ObjectInputStream(fis);
+        try {
+            espetaculoList = (ArrayList<Espetaculo>) ois.readObject();
+        } catch (ClassNotFoundException e) {
+
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        /*
-         * fis = new FileInputStream("coreografo.txt"); ois = new
-         * ObjectInputStream(fis); try { coreografoList = (ArrayList<Coreografo>)
-         * ois.readObject(); } catch (ClassNotFoundException e) {
-         * 
-         * e.printStackTrace(); } catch (IOException e) { coreografos.createNewFile();
-         * bailarinos.createNewFile(); }
-         * 
-         * fis = new FileInputStream("espetaculos.txt"); ois = new
-         * ObjectInputStream(fis); try { espetaculoList = (ArrayList<Espetaculo>)
-         * ois.readObject(); } catch (ClassNotFoundException e) {
-         * 
-         * e.printStackTrace(); } catch (IOException e) { espetaculos.createNewFile();
-         * 
-         * e.printStackTrace(); } fis = new FileInputStream("tecnicos.txt"); ois = new
-         * ObjectInputStream(fis); try { tecnicoList = (ArrayList<Tecnico>)
-         * ois.readObject(); } catch (ClassNotFoundException e) {
-         * 
-         * e.printStackTrace(); } catch (IOException e) { tecnicos.createNewFile();
-         * 
-         * e.printStackTrace(); }
-         * 
-         */
+
+
+
+        fis = new FileInputStream("coreografos.txt");
+        ois = new ObjectInputStream(fis);
+        try {
+            coreografoList = (ArrayList<Coreografo>) ois.readObject();
+        } catch (ClassNotFoundException e) {
+
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        fis = new FileInputStream("tecnicos.txt");
+        ois = new ObjectInputStream(fis);
+        try {
+            tecnicoList = (ArrayList<Tecnico>) ois.readObject();
+        } catch (ClassNotFoundException e) {
+
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         menu();
 
@@ -72,7 +89,7 @@ public class main {
     public static void menu() {
         Scanner s = new Scanner(System.in);
         System.out.println(
-                "1 - Visão geral da empresa\n2 - Gerir Bailarinos\n3 - Gerir Coreografos\n4 - Gerir Tecnicos\n5 - Gerir Espetaculos\n\n99 - Sair");
+                "\n\n\n\n=====MENU PRINCIPAL=====\n1 - Visão geral da empresa\n2 - Gerir Bailarinos\n3 - Gerir Coreografos\n4 - Gerir Tecnicos\n5 - Gerir Espetaculos\n\n99 - Sair");
         switch (s.nextInt()) {
         case 1:
             System.out.println("\n\n\n\n");
@@ -108,7 +125,7 @@ public class main {
         Scanner s = new Scanner(System.in);
         // Scanner s = new Scanner(System.in);
         System.out.println(
-                "========GERIR ESPETÁCULOS========\n1 - Criar Espetáculo\n2 - Remover Espetáculo\n3 - Consultar Espetáculo\n4 - Alterar Espetáculo\n5 - Consultar Investimento\n6 - Calcular Lucro\n7 - Consultar Lotação\n8 - Consultar numero total de Espetáculos\n9 - Listar todos os Espetáculos\n10 - Voltar Atrás");
+                "========GERIR ESPETÁCULOS========\n1 - Criar Espetáculo\n2 - Remover Espetáculo\n3 - Consultar Espetáculo\n4 - Alterar Espetáculo\n5 - Consultar numero total de Espetáculos\n6 - Listar todos os Espetáculos\n7 - Voltar Atrás");
         switch (s.nextInt()) {
         case 1:
         System.out.println("Nome:\n");
@@ -117,22 +134,22 @@ public class main {
         String local= s.next();
         System.out.println("Lotacao:\n");
         int lotacao= s.nextInt();
-        System.out.println("Data (Com o formato DIA-MES-ANO HORAS:MINUTOS:SEGUNDOS):\n");
-       Date data = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
-            Boolean t = true;
-            while(t){
-                
-        try{
-            data= dateFormat.parse(s.next());
-            t=false;
-        }
-        catch(ParseException e){
-            System.out.println("HFJSKF");
-            t=true;
-
-        }
+        System.out.println("Data (Com o formato ANO-MES-DIA HORAS:MINUTOS):\n");
+        
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm",Locale.UK);
+    
+            System.out.println("Por exemplo, este exato momento: " + format.format(new Date()));
+            Date date = null;
+            while (date == null) {
+                String line = s.next();
+                try {
+                    date = format.parse(line);
+                } catch (ParseException e) {
+                    System.out.println("tipo de data inválido, porfavor repita:");
+                }
             }
+  
+        System.out.println(date);
         System.out.println("Preço dos Bilhetes");
         Float preço= s.nextFloat();
         System.out.println("Estilo de danca:\n");
@@ -142,7 +159,7 @@ public class main {
         System.out.println("Investimento:\n");
         Float investimento= s.nextFloat();
         
-        x= new Espetaculo(nome, local, lotacao, data, preço, estiloDanca, bruto, investimento);
+        x= new Espetaculo(nome, local, lotacao, date, preço, estiloDanca, bruto, investimento);
         System.out.println("Escolher Coreografo A partir de:\n1 - Nome\n2 - CC:\n");
         switch (s.nextInt()) {
 
@@ -181,7 +198,7 @@ public class main {
                     case 1:
                         System.out.println("Nome:\n");
                         String nomeConsultar = s.next();
-                        for (a = 0; a < bailarinoList.size(); a++) {
+                        for (a = 0; a < nBailarinos; a++) {
                             if (bailarinoList.get(a).getNome().equals(nomeConsultar)) {
                                 tempBailarinos.add(bailarinoList.get(a));
                             }
@@ -207,7 +224,7 @@ public class main {
                     ArrayList<Tecnico> tempTecnicos= new ArrayList<Tecnico>();
                     int nTecnicos = s.nextInt();
                     for(int b = 0; b<nTecnicos;b++){
-                        System.out.print((b+1)+"º Tecnico: Procurar por:1 - Nome\n2 - CC");
+                        System.out.print((b+1)+"º Tecnico: Procurar por:\n1 - Nome\n2 - CC");
 
                         switch (s.nextInt()) {
 
@@ -244,35 +261,402 @@ public class main {
 
 
 
-
+                    espetaculoList.add(x);
 
             }
-        
+            gerirEspetaculos();
 
             break;
             case 2:
+            System.out.println("Nome:\n");
+            String nomeRemover= s.next();
+            System.out.println("Data (Com o formato ANO-MES-DIA HORAS:MINUTOS):\n");
+        
+            DateFormat formatRemover = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm",Locale.UK);
+    
+            System.out.println("Por exemplo, este exato momento: " + formatRemover.format(new Date()));
+            Date dateRemover = null;
+            while (dateRemover == null) {
+                String line = s.next();
+                try {
+                    dateRemover = formatRemover.parse(line);
+                } catch (ParseException e) {
+                    System.out.println("Sorry, that's not valid. Please try again.");
+                }
+            }
+            for(int i = 0; i<espetaculoList.size();i++){
+                if(espetaculoList.get(i).getNome().equals(nomeRemover)&& espetaculoList.get(i).getData().equals(dateRemover)){
+                    espetaculoList.remove(i);
+                }
+
+            }
 
             
-        
+            gerirEspetaculos();
 
             break;
 
             case 3:
+            System.out.println("Nome:\n");
+            String nomeProcurar= s.next();
+            System.out.println("Data (Com o formato ANO-MES-DIA HORAS:MINUTOS):\n");
         
+            DateFormat formatProcurar = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm",Locale.UK);
+    
+            System.out.println("Por exemplo, este exato momento: " + formatProcurar.format(new Date()));
+            Date dateProcurar = null;
+            while (dateProcurar == null) {
+                String line = s.next();
+                try {
+                    dateProcurar = formatProcurar.parse(line);
+                } catch (ParseException e) {
+                    System.out.println("Sorry, that's not valid. Please try again.");
+                }
+            }
+            for(int i = 0; i<espetaculoList.size();i++){
+                if(espetaculoList.get(i).getNome().equals(nomeProcurar)&& espetaculoList.get(i).getData().equals(dateProcurar)){
+                    System.out.print(espetaculoList.get(i));
+                }
+
+            }
+            gerirEspetaculos();
 
             break;
 
             case 4:
+            int aAlterar = 0;
+            System.out.println("Nome:\n");
+            String nomeAlterar= s.next();
+            System.out.println("Data (Com o formato ANO-MES-DIA HORAS:MINUTOS):\n");
+        
+            DateFormat formatAlterar = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm",Locale.UK);
+    
+            System.out.println("Por exemplo, este exato momento: " + formatAlterar.format(new Date()));
+            Date dateAlterar = null;
+            while (dateAlterar == null) {
+                String line = s.next();
+                try {
+                    dateAlterar = formatAlterar.parse(line);
+                } catch (ParseException e) {
+                    System.out.println("Sorry, that's not valid. Please try again.");
+                }
+            }
+            for(int i = 0; i<espetaculoList.size();i++){
+                if(espetaculoList.get(i).getNome().equals(nomeAlterar)&& espetaculoList.get(i).getData().equals(dateAlterar)){
+                    aAlterar=i;
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            System.out.println("Alterar:\n1 - Nome\n2 - Local3\n3 - Lotacao\n4 - Data\n5 - preço\n6 - Estilo Da Dança\n7 - Bruto\n8 - Investimento\n9 - Lista de Bailarinos\n10 - Coreografo\n11 - Lista de tecnicos\n\n12 - Voltar Atrás ");
+            switch (s.nextInt()) {
+            case 1:
+            System.out.println("Nome:\n");
+            espetaculoList.get(aAlterar).setNome(s.next());
+
+                break;
+            case 2:
+            System.out.println("Local:\n");
+            espetaculoList.get(aAlterar).setLocal(s.next());
+
+
+                break;
+            case 3:
+            System.out.println("Lotação:\n");
+            espetaculoList.get(aAlterar).setLotacao(s.nextInt());
+
+
+                break;
+            case 4:
+            System.out.println("Data:\n");
+            DateFormat formatAlterarA = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm",Locale.UK);
+    
+            System.out.println("Por exemplo, este exato momento: " + formatAlterarA.format(new Date()));
+            Date dateAlterarA = null;
+            while (dateAlterarA == null) {
+                String line = s.next();
+                try {
+                    dateAlterarA = formatAlterarA.parse(line);
+                } catch (ParseException e) {
+                    System.out.println("Sorry, that's not valid. Please try again.");
+                }
+            }
+            espetaculoList.get(aAlterar).setData(dateAlterarA);
+                
+
+
+
+
+                break;
+            case 5:
+            System.out.println("preço:\n");
+            espetaculoList.get(aAlterar).setPreço(s.nextFloat());
+
+
+
+
+
+                break;
+            case 6:
+            
+            System.out.println("Nome:\n");
+            espetaculoList.get(aAlterar).setEstiloDanca(s.next());
+
+
+                break;
+            case 7:
+            System.out.println("Bruto:\n");
+            espetaculoList.get(aAlterar).setBruto(s.nextFloat());
+
+
+
+                break;
+            case 8:
+            System.out.println("Investimento:\n");
+            espetaculoList.get(aAlterar).setInvestimento(s.nextFloat());
+
+                break;
+            case 9:
+            System.out.print("Quer\n1 - adicionar\n2 - remover?");
+            ArrayList<Bailarino> temp=espetaculoList.get(aAlterar).getBailarinos();
+
+            switch (s.nextInt()) {
+                case 1:
+                System.out.println("Consultar a partir do \n1 - Nome\n2 - CC");
+            // ler nome
+            // = nome lido
+            switch (s.nextInt()) {
+
+            case 1:
+                System.out.println("Nome:\n");
+                String nomeConsultar = s.next();
+                for (int i = 0; i < bailarinoList.size(); i++) {
+                    if (bailarinoList.get(i).getNome().equals(nomeConsultar)) {
+                        temp.add(bailarinoList.get(i));
+                        espetaculoList.get(aAlterar).setBailarinosEspetaculo(temp);
+
+                    }
+
+                }
+
+                break;
+            case 2:
+                System.out.println("CC:\n");
+                float ccConsultar = s.nextFloat();
+                for (int i = 0; i < bailarinoList.size(); i++) {
+                    if (bailarinoList.get(i).getCc() == ccConsultar) {
+                        temp.add(bailarinoList.get(i));
+                        espetaculoList.get(aAlterar).setBailarinosEspetaculo(temp);
+                    }
+
+                }
+
+                break;
+
+            }
+
+
+                    
+                    break;
+                    case 2:
+                    for(int i =0; i < espetaculoList.get(aAlterar).getBailarinos().size();i++){
+                        System.out.println("iº Bailarino:"+temp.get(i).getNome());
+        
+                    }
+                    System.out.println("Numero:");
+                    int numeroARemover=s.nextInt();
+                    temp.remove(numeroARemover);
+                    espetaculoList.get(aAlterar).setBailarinosEspetaculo(temp);
+                    
+                    break;
+            
+                default:
+                    break;
+            }
+
+          
+            
+
+                break;
+            case 10:
+            System.out.println("Consultar a partir do \n1 - Nome\n2 - CC\n\n3 - Voltar atrás");
+            n = s.nextInt();
+            switch (n) {
+
+            case 1:
+                System.out.println("Nome:\n");
+                String nomeAlterarC = s.next();
+                for (int i = 0; i < coreografoList.size(); i++) {
+                    if (coreografoList.get(i).getNome() == nomeAlterarC) {
+                        espetaculoList.get(aAlterar).setCoreografoEspetaculo(coreografoList.get(i));
+                    }
+
+                }
+
+                break;
+            case 2:
+                System.out.println("CC:\n");
+                float ccRemover = s.nextFloat();
+                for (int i = 0; i < coreografoList.size(); i++) {
+                    if (coreografoList.get(i).getCc() == ccRemover) {
+                        espetaculoList.get(aAlterar).setCoreografoEspetaculo(coreografoList.get(i));
+                    }
+
+                }
+
+                break;
+
+            default:
+                gerirCoreografos();
+                break;
+
+            }
+
+                break;
+            case 11:
+            System.out.print("Quer\n1 - adicionar\n2 - remover?\n3 - Voltar Atrás");
+            ArrayList<Tecnico> tempI=espetaculoList.get(aAlterar).getTecnicos();
+
+            switch (s.nextInt()) {
+                case 1:
+                System.out.println("Consultar a partir do \n1 - Nome\n2 - CC");
+            // ler nome
+            // = nome lido
+            switch (s.nextInt()) {
+
+            case 1:
+                System.out.println("Nome:\n");
+                String nomeConsultar = s.next();
+                for (int i = 0; i < tecnicoList.size(); i++) {
+                    if (tecnicoList.get(i).getNome().equals(nomeConsultar)) {
+                        tempI.add(tecnicoList.get(i));
+                        espetaculoList.get(aAlterar).setTecnicosEspetaculo(tempI);
+
+                    }
+
+                }
+
+                break;
+            case 2:
+                System.out.println("CC:\n");
+                float ccConsultar = s.nextFloat();
+                for (int i = 0; i < tecnicoList.size(); i++) {
+                    if (tecnicoList.get(i).getCc() == ccConsultar) {
+                        tempI.add(tecnicoList.get(i));
+                        espetaculoList.get(aAlterar).setTecnicosEspetaculo(tempI);
+                    }
+
+                }
+
+                break;
+
+            }
+
+
+                    
+                    break;
+                    case 2:
+                    for(int i =0; i < espetaculoList.get(aAlterar).getTecnicos().size();i++){
+                        System.out.println("iº Tecnico:"+tempI.get(i).getNome());
+        
+                    }
+                    System.out.println("Numero:");
+                    int numeroARemover=s.nextInt();
+                    tempI.remove(numeroARemover);
+                    espetaculoList.get(aAlterar).setTecnicosEspetaculo(tempI);
+                    
+                    break;
+            
+                default:
+                gerirEspetaculos();
+                    break;
+            }
+
+          
+            gerirEspetaculos();
+
+                break;
+            
+            case 12:
+                gerirEspetaculos();
+                break;
+            
+                default:
+                gerirEspetaculos();
+                    break;
+            }
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
 
             break;
 
             case 5:
+            System.out.println("Numero total de espetaculos: "+ espetaculoList.size());
         
 
             break;
 
             case 6:
+            for(int i = 0; i <espetaculoList.size();i++ ){
+                System.out.println(espetaculoList.get(i));
+
+            }
         
 
             break;
@@ -282,6 +666,9 @@ public class main {
         default:
             break;
         }
+
+        writeToFileEspetaculos();
+        gerirEspetaculos();
 
     }
 
@@ -302,7 +689,7 @@ public class main {
             // Ler idade
             int idade = s.nextInt();// = idade lido ;
 
-            System.out.println("Salario [DEFAULT:1000€]:\n");
+            System.out.println("Salario :\n");
             double salario = s.nextDouble();
 
             // remover genero para facilitar e inicializar com salario base por exemplo
@@ -562,11 +949,13 @@ public class main {
             System.out.println("Numero de Identificação:\n");
             // Ler cc
             long cc = s.nextLong(); // = cc lido ;
+
+            
             System.out.println("Idade:\n");
             // Ler idade
             int idade = s.nextInt();// = idade lido ;
 
-            System.out.println("Salario [DEFAULT:1000€]:\n");
+            System.out.println("Salario :\n");
             double salario = s.nextDouble();
 
             // remover genero para facilitar e inicializar com salario base por exemplo
@@ -810,6 +1199,7 @@ public class main {
         }
 
         gerirCoreografos();
+        writeToFileCoreografo();
 
     }
 
@@ -831,7 +1221,7 @@ public class main {
             // Ler idade
             int idade = s.nextInt();// = idade lido ;
 
-            System.out.println("Salario [DEFAULT:1000€]:\n");
+            System.out.println("Salario :\n");
             double salario = s.nextDouble();
 
             System.out.println("Especificação");
@@ -1084,12 +1474,19 @@ public class main {
             menu();
             break;
         }
+        
 
         gerirTecnicos();
+        writeToFileTecnicos();
 
     }
 
     public static void gerirEmpresa() {
+        if(espetaculoList.size()<1){
+            System.out.println("Não é possível ver as estatísticas sobre a empresa enquanto não tiver nenhum espetáculo no sistema");
+            menu();
+
+        }
         Scanner s = new Scanner(System.in);
 
         System.out.println(
@@ -1112,7 +1509,7 @@ public class main {
             lucroMedio = lucroTotal / (espetaculoList.size());
             System.out.println("Lucro Total: " + lucroTotal + "\n");
             System.out.println("Lucro Médio: " + lucroMedio + "\n");
-
+            
             break;
 
         case 2:
@@ -1150,7 +1547,7 @@ public class main {
             break;
         }
         s.close();
-
+        gerirEmpresa();
     }
 
     public static void writeToFileBailarinos() {

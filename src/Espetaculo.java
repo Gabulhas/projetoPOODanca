@@ -96,12 +96,12 @@ public class Espetaculo implements Serializable{
     public ArrayList<Bailarino> getBailarinos(){
         return bailarinosEspetaculo;
     }
-    public ArrayList<Bailarino> getCoreografo(){
-        return bailarinosEspetaculo;
+    public Coreografo getCoreografo(){
+        return coreografoEspetaculo;
     }
 
-    public ArrayList<Bailarino> getTecnicos(){
-        return bailarinosEspetaculo;
+    public ArrayList<Tecnico> getTecnicos(){
+        return tecnicosEspetaculo;
     }
     
     public void setBailarinosEspetaculo(ArrayList<Bailarino> bailarinosEspetaculo) {
