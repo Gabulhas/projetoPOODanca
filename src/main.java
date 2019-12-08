@@ -74,7 +74,7 @@ public class main {
         switch (s.nextInt()) {
         case 1:
             System.out.println("\n\n\n\n");
-            // gerirEmpresa();
+           gerirEmpresa();
             break;
         case 2:
             System.out.println("\n\n\n\n");

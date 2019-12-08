@@ -94,8 +94,28 @@ public class Espetaculo implements Serializable{
         this.investimento = investimento;
     }
     public ArrayList<Bailarino> getBailarinos(){
-        return bailarinos
+        return bailarinosEspetaculo;
     }
+    public ArrayList<Bailarino> getCoreografo(){
+        return bailarinosEspetaculo;
+    }
+
+    public ArrayList<Bailarino> getTecnicos(){
+        return bailarinosEspetaculo;
+    }
+    
+    public void setBailarinosEspetaculo(ArrayList<Bailarino> bailarinosEspetaculo) {
+        this.bailarinosEspetaculo = bailarinosEspetaculo;
+    }
+    
+    public void setCoreografoEspetaculo(Coreografo coreografoEspetaculo) {
+        this.coreografoEspetaculo = coreografoEspetaculo;
+    }
+    
+    public void setTecnicosEspetaculo(ArrayList<Tecnico> tecnicosEspetaculo) {
+        this.tecnicosEspetaculo = tecnicosEspetaculo;
+    }
+
 
 
 
